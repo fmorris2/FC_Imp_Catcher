@@ -64,7 +64,7 @@ public class FCImpCatcher extends QuestScriptManager
 	
 	public String toString()
 	{
-		return getMissionName();
+		return "Imp Catcher";
 	}
 
 }
