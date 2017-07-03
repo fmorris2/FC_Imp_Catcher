@@ -61,5 +61,10 @@ public class FCImpCatcher extends QuestScriptManager
 	{
 		return new LinkedList<>(Arrays.asList(new WizardDialogue()));
 	}
+	
+	public String toString()
+	{
+		return getMissionName();
+	}
 
 }
