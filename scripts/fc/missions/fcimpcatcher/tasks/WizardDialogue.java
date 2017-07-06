@@ -1,13 +1,11 @@
 package scripts.fc.missions.fcimpcatcher.tasks;
 
-import org.tribot.api.General;
 import org.tribot.api.interfaces.Positionable;
 import org.tribot.api2007.Game;
 import org.tribot.api2007.Player;
 import org.tribot.api2007.types.RSArea;
 import org.tribot.api2007.types.RSTile;
 
-import scripts.fc.api.generic.FCFilters;
 import scripts.fc.api.interaction.impl.npcs.dialogue.NpcDialogue;
 import scripts.fc.api.items.FCItem;
 import scripts.fc.api.travel.Travel;
@@ -35,7 +33,7 @@ public class WizardDialogue extends Task implements ItemsRequiredTask
 		boolean dialogueSuccess = new NpcDialogue("Talk-to", "Wizard Mizgog", 10, 0, 0).execute();
 		
 		if(isAtEnd)
-			FCTiming.waitCondition(() -> InterfaceUtils.isQuestInterfaceUp(), 6000);
+			FCTiming.waitCondition(() -> InterfaceUtils.isQuestInterfaceUp(), 12000);
 		
 		return dialogueSuccess;
 	}
