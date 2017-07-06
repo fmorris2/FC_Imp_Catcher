@@ -67,4 +67,10 @@ public class FCImpCatcher extends QuestScriptManager
 		return "Imp Catcher";
 	}
 
+	@Override
+	public boolean canStart()
+	{
+		return true;
+	}
+
 }
