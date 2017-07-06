@@ -1,15 +1,21 @@
 package scripts.fc.missions.fcimpcatcher.tasks;
 
+import org.tribot.api.General;
 import org.tribot.api.interfaces.Positionable;
+import org.tribot.api2007.Game;
 import org.tribot.api2007.Player;
 import org.tribot.api2007.types.RSArea;
 import org.tribot.api2007.types.RSTile;
 
+import scripts.fc.api.generic.FCFilters;
 import scripts.fc.api.interaction.impl.npcs.dialogue.NpcDialogue;
 import scripts.fc.api.items.FCItem;
 import scripts.fc.api.travel.Travel;
+import scripts.fc.api.utils.InterfaceUtils;
+import scripts.fc.api.wrappers.FCTiming;
 import scripts.fc.framework.task.ItemsRequiredTask;
 import scripts.fc.framework.task.Task;
+import scripts.fc.missions.fcimpcatcher.FCImpCatcher;
 import scripts.fc.missions.fcimpcatcher.data.ImpRequirements;
 
 public class WizardDialogue extends Task implements ItemsRequiredTask
@@ -24,8 +30,14 @@ public class WizardDialogue extends Task implements ItemsRequiredTask
 	{
 		if(!WIZARD_AREA.contains(Player.getPosition()))
 			return Travel.webWalkTo(WIZARD_TILE);
-		else
-			return new NpcDialogue("Talk-to", "Wizard Mizgog", 10, 0, 0).execute();
+		
+		boolean isAtEnd = Game.getSetting(FCImpCatcher.SETTING) >= 1;
+		boolean dialogueSuccess = new NpcDialogue("Talk-to", "Wizard Mizgog", 10, 0, 0).execute();
+		
+		if(isAtEnd)
+			FCTiming.waitCondition(() -> InterfaceUtils.isQuestInterfaceUp(), 6000);
+		
+		return dialogueSuccess;
 	}
 
 	@Override
