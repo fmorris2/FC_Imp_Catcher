@@ -1,8 +1,5 @@
 package scripts.fc.missions.fcimpcatcher.data;
 
-import java.util.List;
-
-import scripts.fc.framework.mission.Mission;
 import scripts.fc.framework.requirement.item.ItemRequirement;
 import scripts.fc.framework.requirement.item.ReqItem;
 import scripts.fc.framework.requirement.item.SingleReqItem;
@@ -28,11 +25,4 @@ public class ImpRequirements extends ItemRequirement
 			new SingleReqItem(WHITE_BEAD, 1, true, true),
 		};
 	}
-
-	@Override
-	public List<Mission> getReqMissions()
-	{
-		return null;
-	}
-
 }
